@@ -1,15 +1,16 @@
 package utils
 
 import (
-	. "sentiment-analyzer/types"
+	types "sentiment-analyzer/types"
 	"strings"
 )
 
-func SentimentMap(content string) SentimentDistribution {
+// Função para mapear o sentimento-valor do conteúdo da mensagem
+func SentimentMap(content string) types.SentimentDistribution {
 	tokens := SplitContent(content)
 
-	var result SentimentDistribution
-	lexiconMatches := 0 // controla se houve match no léxico
+	var result types.SentimentDistribution
+	lexiconMatches := 0
 
 	for _, token := range tokens {
 		// ignora hashtags
@@ -33,7 +34,7 @@ func SentimentMap(content string) SentimentDistribution {
 	}
 
 	if IsCandidateAwareness(content) {
-		return SentimentDistribution{
+		return types.SentimentDistribution{
 			Positive: 0,
 			Negative: 0,
 			Neutral:  0,
@@ -42,7 +43,7 @@ func SentimentMap(content string) SentimentDistribution {
 
 	// Nenhum termo do léxico encontrado
 	if lexiconMatches == 0 {
-		return SentimentDistribution{
+		return types.SentimentDistribution{
 			Positive: 0,
 			Negative: 0,
 			Neutral:  100,

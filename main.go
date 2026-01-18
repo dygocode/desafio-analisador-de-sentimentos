@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	. "sentiment-analyzer/types"
-	. "sentiment-analyzer/utils"
+	types "sentiment-analyzer/types"
+	utils "sentiment-analyzer/utils"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
@@ -12,19 +12,21 @@ import (
 
 var validate = validator.New()
 
+// Função para instanciar o app Fiber
 func AppInstance() *fiber.App {
 	app := fiber.New()
 	return app
 }
 
 var app = AppInstance()
-var result AnalysisResponse
+var result types.AnalysisResponse
 
+// Função main
 func main() {
 	// Rota analyze-feed
 	// Analisa um feed de mensagens e retorna métricas de sentimento
 	app.Post("/analyze-feed", func(c *fiber.Ctx) error {
-		var msg MessageRequest
+		var msg types.MessageRequest
 
 		// Parse e validação da requisição
 		if err := c.BodyParser(&msg); err != nil {
@@ -53,7 +55,7 @@ func main() {
 		// }
 
 		for _, msgTime := range msg.Messages {
-			if IsTimeWindow(msgTime.Timestamp, msg.TimeWindowMinutes) {
+			if utils.IsTimeWindow(msgTime.Timestamp, msg.TimeWindowMinutes) {
 				return c.Status(fiber.StatusUnprocessableEntity).JSON(fiber.Map{
 					"error": "Valor de janela temporal não suportado na versão atual",
 					"code":  "UNSUPPORTED_TIME_WINDOW",

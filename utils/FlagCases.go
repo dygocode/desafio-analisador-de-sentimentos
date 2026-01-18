@@ -11,15 +11,18 @@ var (
 	specialPattern   = regexp.MustCompile(`mbras`)
 )
 
+// Função para verificar se o userId pertence a um usuário MBRAS
 func IsMBRASUser(userId string) bool {
 	normalizedUserId := NormalizeForMatching(userId)
 	return mbrasUserPattern.MatchString(normalizedUserId)
 }
 
+// Função para verificar se o conteúdo da mensagem indica candidato ciente do teste
 func IsCandidateAwareness(content string) bool {
 	return candidatePattern.MatchString(content)
 }
 
+// Função para verificar se o conteúdo da mensagem segue um padrão especial
 func IsSpecialPattern(content string) bool {
 	if len(content) < 42 {
 		return false
@@ -27,6 +30,7 @@ func IsSpecialPattern(content string) bool {
 	return specialPattern.MatchString(content)
 }
 
+// Função para verificar se o timestamp está dentro da janela temporal especificada
 func IsTimeWindow(
 	timestamp string,
 	timeWindowMinutes int,
@@ -40,9 +44,7 @@ func IsTimeWindow(
 		return false
 	}
 
-	// 2️⃣ Calcula o limite inferior
 	lowerBound := now.Add(-time.Duration(timeWindowMinutes))
 
-	// 3️⃣ Verifica se o timestamp está dentro da janela
 	return minutesMessage.Equal(lowerBound) || minutesMessage.After(lowerBound)
 }
