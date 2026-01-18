@@ -6,7 +6,7 @@ import (
 	"golang.org/x/text/unicode/norm"
 )
 
-// Função para normalizar uma palavra para fins de comparação
+// NormalizeForMatching normaliza uma palavra para fins de comparação
 func NormalizeForMatching(token string) string {
 	// passar para lowercase
 	tempToken := strings.ToLower(token)

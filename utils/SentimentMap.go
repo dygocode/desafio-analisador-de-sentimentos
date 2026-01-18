@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-// Função para mapear o sentimento-valor do conteúdo da mensagem
+// SentimentMap mapea o sentimento-valor do conteúdo da mensagem
 func SentimentMap(content string) types.SentimentDistribution {
 	tokens := SplitContent(content)
 

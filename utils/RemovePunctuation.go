@@ -2,7 +2,7 @@ package utils
 
 import "strings"
 
-// Remove pontuação do texto
+// RemovePunctuation remove pontuação do texto
 func RemovePunctuation(text string) string {
 	punctuation := ".,!?;:\"()[]{}…"
 

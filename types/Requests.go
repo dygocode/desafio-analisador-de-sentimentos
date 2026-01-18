@@ -1,11 +1,12 @@
 package types
 
-// Estruturas do Request
+// MessageRequest representa a requisição para análise de mensagens
 type MessageRequest struct {
 	Messages          []Message `json:"messages" validate:"required,min=1,dive"`
 	TimeWindowMinutes int       `json:"time_window_minutes" validate:"required,min=1"`
 }
 
+// Message representa uma única mensagem no feed
 type Message struct {
 	Id        string `json:"id" validate:"required"`
 	Content   string `json:"content" validate:"required,max=280"`

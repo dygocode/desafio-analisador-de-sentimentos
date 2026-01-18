@@ -8,7 +8,7 @@ import (
 	"golang.org/x/text/unicode/norm"
 )
 
-// Função para remover diácriticos de uma string
+// RemoveDiacritics remove diácriticos de uma string
 func RemoveDiacritics(token string) string {
 	t := transform.Chain(norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC)
 

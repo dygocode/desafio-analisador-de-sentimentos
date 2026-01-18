@@ -1,10 +1,11 @@
 package types
 
-// Estruturas do Response
+// AnalysisResponse representa a estrutura do Response
 type AnalysisResponse struct {
 	Analysis AnalysisResult `json:"analysis"`
 }
 
+// AnalysisResult representa o resultado da análise de sentimento
 type AnalysisResult struct {
 	SentimentDistribution SentimentDistribution `json:"sentiment_distribution"`
 	AnomalyType           string                `json:"anomaly_type"`
@@ -16,17 +17,20 @@ type AnalysisResult struct {
 	Flags                 Flags                 `json:"flags"`
 }
 
+// SentimentDistribution representa a distribuição de sentimentos
 type SentimentDistribution struct {
 	Positive int `json:"positive"`
 	Negative int `json:"negative"`
 	Neutral  int `json:"neutral"`
 }
 
+// InfluenceScore representa a pontuação de influência de um usuário
 type InfluenceScore struct {
 	UserId         string `json:"user_id"`
 	InfluenceScore int    `json:"influence_score"`
 }
 
+// Flags representa os flags especiais associados à análise
 type Flags struct {
 	MbrasEmployee      bool `json:"mbras_employee"`
 	SpecialPattern     bool `json:"special_pattern"`
