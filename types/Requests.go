@@ -8,10 +8,10 @@ type MessageRequest struct {
 
 // Message representa uma única mensagem no feed
 type Message struct {
-	Id        string `json:"id" validate:"required"`
+	ID        string `json:"id" validate:"required"`
 	Content   string `json:"content" validate:"required,max=280"`
 	Timestamp string `json:"timestamp" validate:"required"`
-	UserId    string `json:"user_id" validate:"required"`
+	UserID    string `json:"user_id" validate:"required"`
 
 	Hashtags []string `json:"hashtags,omitempty"`
 

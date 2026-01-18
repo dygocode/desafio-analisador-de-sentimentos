@@ -5,7 +5,7 @@ import (
 	utils "sentiment-analyzer/utils"
 )
 
-// Função principal de análise de sentimento
+// SentimentAnalyzer é a função principal de análise de sentimento
 func SentimentAnalyzer(message types.MessageRequest) (bool, types.AnalysisResponse) {
 	sentiment := types.SentimentDistribution{}
 	trendingTopics := []string{}
@@ -24,13 +24,13 @@ func SentimentAnalyzer(message types.MessageRequest) (bool, types.AnalysisRespon
 		trendingTopics = append(trendingTopics, msg.Hashtags...)
 
 		flags = types.Flags{
-			MbrasEmployee:      utils.IsMBRASUser(msg.UserId),
+			MbrasEmployee:      utils.IsMBRASUser(msg.UserID),
 			SpecialPattern:     utils.IsSpecialPattern(msg.Content),
 			CandidateAwareness: utils.IsCandidateAwareness(msg.Content),
 		}
 
 		influenceRanking = append(influenceRanking, types.InfluenceScore{
-			UserId:         msg.UserId,
+			UserID:         msg.UserID,
 			InfluenceScore: msg.Reactions + msg.Shares + msg.Views,
 		})
 	}

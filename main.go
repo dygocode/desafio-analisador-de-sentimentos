@@ -12,7 +12,7 @@ import (
 
 var validate = validator.New()
 
-// Função para instanciar o app Fiber
+// AppInstance é a função para instanciar o app Fiber
 func AppInstance() *fiber.App {
 	app := fiber.New()
 	return app

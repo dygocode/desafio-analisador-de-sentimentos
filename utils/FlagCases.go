@@ -11,10 +11,10 @@ var (
 	specialPattern   = regexp.MustCompile(`mbras`)
 )
 
-// IsMBRASUser verifica se o userId pertence a um usuário MBRAS
-func IsMBRASUser(userId string) bool {
-	normalizedUserId := NormalizeForMatching(userId)
-	return mbrasUserPattern.MatchString(normalizedUserId)
+// IsMBRASUser verifica se o userID pertence a um usuário MBRAS
+func IsMBRASUser(userID string) bool {
+	normalizedUserID := NormalizeForMatching(userID)
+	return mbrasUserPattern.MatchString(normalizedUserID)
 }
 
 // IsCandidateAwareness verifica se o conteúdo da mensagem indica candidato ciente do teste

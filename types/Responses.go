@@ -26,7 +26,7 @@ type SentimentDistribution struct {
 
 // InfluenceScore representa a pontuação de influência de um usuário
 type InfluenceScore struct {
-	UserId         string `json:"user_id"`
+	UserID         string `json:"user_id"`
 	InfluenceScore int    `json:"influence_score"`
 }
 
