@@ -7,14 +7,14 @@ type AnalysisResponse struct {
 
 // AnalysisResult representa o resultado da análise de sentimento
 type AnalysisResult struct {
-	SentimentDistribution SentimentDistribution `json:"sentiment_distribution"`
-	AnomalyType           string                `json:"anomaly_type"`
 	TrendingTopics        []string              `json:"trending_topics"`
 	InfluenceRanking      []InfluenceScore      `json:"influence_ranking"`
-	EngagementScore       float32               `json:"engagement_score"`
+	AnomalyType           string                `json:"anomaly_type"`
+	EngagementScore       float64               `json:"engagement_score"`
+	SentimentDistribution SentimentDistribution `json:"sentiment_distribution"`
 	ProcessingTimeMs      int                   `json:"processing_time_ms"`
-	AnomalyDetected       bool                  `json:"anomaly_detected"`
 	Flags                 Flags                 `json:"flags"`
+	AnomalyDetected       bool                  `json:"anomaly_detected"`
 }
 
 // SentimentDistribution representa a distribuição de sentimentos
